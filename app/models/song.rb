@@ -20,9 +20,9 @@ class Song < ActiveRecord::Base
   end
 
   def notes=(notes)
-    notes.each do |note|
-      if !note.empty?
-        n = Note.new(:content => note, :song_id => self.id)
+    notes.each do |content|
+      if !content.empty?
+        n = self.notes.build(content: content)
         n.save
         self.notes << n
       end
