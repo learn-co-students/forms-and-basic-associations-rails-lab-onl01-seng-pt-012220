@@ -1,4 +1,4 @@
-<h1>Editing <%= @song.title %></h1>
+<h1>Create a Song</h1>
 
 <%= form_for @song  do |f| %>
   <%= f.label :title %><br />
@@ -23,8 +23,10 @@
   </datalist>
   <br />
 
-
-
+  <%= f.fields_for :notes_attributes do |n| %>
+    <%= n.label "Note:" %><br />
+    <%= n.text_field :content %><br />
+  <% end %>
 
   <%= f.submit %>
 <% end %>

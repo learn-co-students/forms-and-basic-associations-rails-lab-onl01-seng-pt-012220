@@ -12,18 +12,12 @@ class Song < ActiveRecord::Base
     self.artist ? self.artist.name : nil
   end
     
-  def genre_id=(name)
+  def genre_name=(name)
     self.genre = Genre.find_or_create_by(name: name)
   end
 
-  def genre_id
+  def genre_name
     self.genre ? self.genre.name : nil
   end
-
-  def notes_attributes=(attributes)
-    attributes.each do |k,v|
-      Note.create(content: v[:content], song: self)
-    end    
-  end 
 
 end
