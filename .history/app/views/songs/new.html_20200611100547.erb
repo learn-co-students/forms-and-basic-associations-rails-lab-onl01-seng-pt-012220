@@ -1,4 +1,4 @@
-<h1>Editing <%= @song.title %></h1>
+<h1>Create a Song</h1>
 
 <%= form_for @song  do |f| %>
   <%= f.label :title %><br />
@@ -14,17 +14,9 @@
   </datalist>
   <br />
 
-  <%= f.label :genre_id %><br />
-  <%= f.text_field :genre_id, list: "genres_autocomplete" %>
-  <datalist id="genres_autocomplete">
-    <% Genre.all.each do |genre| %>
-      <option value="<%= genre.name %>">
-    <% end %>
-  </datalist>
+  <%= f.label :genre_name %><br />
+  <%= f.text_field :genre_name %>
   <br />
-
-
-
 
   <%= f.submit %>
 <% end %>

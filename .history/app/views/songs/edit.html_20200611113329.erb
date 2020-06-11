@@ -23,7 +23,9 @@
   </datalist>
   <br />
 
-
+  <%= f.fields_for notes_attributes, note, :index => notes_attributes do |n| %>
+    <%= n.text_field :content %><br />
+  <% end %>
 
 
   <%= f.submit %>
