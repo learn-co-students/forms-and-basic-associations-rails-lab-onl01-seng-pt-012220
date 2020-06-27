@@ -1,2 +1,22 @@
 <h1>Artists#show</h1>
 <p>Find me in app/views/artists/show.html.erb</p>
+
+<h1><%= @artist.name.capitalize %></h1>
+<h3>Songs:</h3>
+<% if @artist.songs.empty? %>
+  <h4><%= @artist.name %> doesn't have any song listed yet. <%= link_to "Add a song", new_song_path %></h4>
+<% else %>
+  <ul>
+    <% @artist.songs.each do |song| %>
+      <li>
+        <p><%= link_to song.title, song %></p><br>
+        <p>About: 
+            <% song.try(:notes).each do |note| %>
+              <p><%= note.content %></p>
+            <% end %>
+        </p>
+        <p><%= song.genre_name %></p>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

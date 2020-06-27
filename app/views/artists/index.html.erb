@@ -1,2 +1,21 @@
 <h1>Artists#index</h1>
 <p>Find me in app/views/artists/index.html.erb</p>
+<br>
+<div>
+    <% if @artists.empty? %>
+        <h3>There's no Artist in the list yet, <%= link_to "Add an artist here", new_artist_path %></h3>
+    <% else %>
+     <ul>
+        <% @artists.each do |artist| %>
+        <li>
+            <%= link_to artist.name, artist %> :
+            <%= pluralize(artist.songs.count, "song")%>
+        </li>
+        <% end %>
+    </ul>
+    <br>
+    <%= link_to "Add an Artist", new_artist_path %>
+    <% end %>
+</div>
+
+
